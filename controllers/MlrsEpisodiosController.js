@@ -8,10 +8,9 @@ const route = express.Router();
 // ROTA MlrsEpisodios
 route.get("/mlrsEpisodios",function(req,res){
    
-    //Selecionando todos os clientes do banco de dados
     MlrsEpisodios.findAll().then(mlrsEpisodios=>{
         res.render("mlrsEpisodios", {
-        //Enviando a lista de clientes para a página HTML
+        
         mlrsEpisodios : mlrsEpisodios,
         });
     }).catch(error=>{
@@ -48,7 +47,7 @@ route.get("/mlrsEpisodios/excluir/:id", (req, res)=> {
 });
 
 //ROTA DE EDIÇÃO DO EPISODIO
-route.get("/mlrsEpisodio/editar/:id", (req, res)=>{
+route.get("/mlrsEpisodios/editar/:id", (req, res)=>{
     const id = req.params.id;
     MlrsEpisodios.findByPk(id).then(mlrsEpisodios=>{
         res.render("mlrsEpisodiosEditar",{

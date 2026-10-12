@@ -3,7 +3,7 @@
 import connection from "../config/sequelize-config.js";
 import Sequelize from "sequelize";
 
-const MlresEpisodios = connection.define('mlrsEpisodios', {
+const MlrsEpisodios = connection.define('mlrsEpisodios', {
     episodio: {
         type: Sequelize.STRING,
         allowNull: false
@@ -12,8 +12,10 @@ const MlresEpisodios = connection.define('mlrsEpisodios', {
         type:Sequelize.STRING,
         allowNull: false
     },
-
+},
+{
+    timestamps: false // <-- Desativa a busca por createdAt e updatedAt
 });
 
-MlresEpisodios.sync({force: false});
-export default MlresEpisodios;
+MlrsEpisodios.sync({force: false});
+export default MlrsEpisodios;

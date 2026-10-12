@@ -17,12 +17,7 @@ app.set('view engine','ejs');
 //define o uso da pasta "public" para uso de arquivos estáticos
 app.use(express.static('public'));
 
-//Conexão com o BD
-connection.authenticate().then(()=>{
-    console.log("Conexão com o Banco de Dados realizada com sucesso");
-}).catch((error =>{
-    console.log(`Erro ao se conectar com o banco de dados. ERRO: ${error}`);
-}))
+
 
 //Criando o Banco de dados se ele não existir
 const DB_NAME = "apotecaria";
@@ -31,6 +26,13 @@ connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`).then(()=>{
 }).catch((error)=>{
     console.log(`Ocorreu um erro ao criar o banco de dados. ERRO: ${error}`)
 });
+
+//Conexão com o BD
+connection.authenticate().then(()=>{
+    console.log("Conexão com o Banco de Dados realizada com sucesso");
+}).catch((error =>{
+    console.log(`Erro ao se conectar com o banco de dados. ERRO: ${error}`);
+}))
 
 import CuriosidadesController from "./controllers/CuriosidadesController.js";
 import MlrsEpisodiosController from "./controllers/MlrsEpisodiosController.js";
