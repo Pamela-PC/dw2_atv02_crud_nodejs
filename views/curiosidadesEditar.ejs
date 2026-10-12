@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs')%>
+<%- include('partials/navbar.ejs')%>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Curiosidades</h1>
+            <br>
+        </div>
+        <div class="card-body">
+            <form action="/curiosidades/alterar" method="POST">
+            <label for="ordem">Ordem da Curiosidade</label>
+            <input type="text" name="ordem" id="ordem" class="form-control" required value="<%=curiosidades.ordem %>">
+            <label for="curiosidade">Curiosidade</label>
+            <input type="text" name="curiosidade" id="curiosidade" class="form-control" required value="<%=curiosidades.curiosidade%>">
+            
+            <input type="hidden" name="id" id="id" value="<%=curiosidades.id %>">
+            <br>
+            <button type="submit" class="btn btn-warning" onclick="return confirm('Deseja mesmo alterar a curiosidade <%=curiosidades.ordem %>')">Alterar</button>
+            <a href="/curiosidades">
+            <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs')%>

@@ -1,0 +1,77 @@
+<%- include('partials/header.ejs')%>    
+<%- include('partials/navbar.ejs')%>    
+
+    <h4 style="text-align: center;">Personagens Principais</h4>
+
+    <div class="container">
+            <div class="card">
+                <div class="card-header">
+                <h1>Cadastrar Personagem</h1>
+                </div>
+
+                <div class="card-body">
+                    <!-- action: para onde os dados seram enviados -->
+                     <!-- Método "POST" -->
+                    <form action="/personagens/cadastrar" method="POST">
+                        <label for="nome">Nome do Personagem: </label>
+                        <input type="text" id="nome" name="nome" placeholder="Insira o nome do personagem" class="form-control" required>
+
+                        <label for="idade">Idade do Personagem: </label>
+                        <input type="text" id="idade" name="idade" placeholder="Insira a idade do personagem" class="form-control" required>
+
+                        <label for="descricao">Descrição do Personagem: </label>
+                        <input type="text" id="descricao" name="descricao" placeholder="Insira a descrição do personagem" class="form-control" required>
+
+                        <br>
+
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="reset" class="btn btn-danger">Limpar</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <table border="1">
+                    <tr>
+                        <th>Nome: </th>
+                        <th>Idade: </th>
+                        <th>Descrição: </th>
+                        <th style="text-align: center;" colspan="2">Ações:</th>
+
+                    </tr>
+                    <% personagens.forEach(function(personagem){%>
+                    <tr>
+                        <td><%=personagem.nome%></td>
+                        <td><%=personagem.idade%></td>
+                        <td><%=personagem.descricao%></td>
+                        <td>
+                            <a class="btn btn-warning" href="/personagens/editar/<%=personagem.id %>">Editar</a>
+                        </td>                             
+                        <td>
+                            <a class="btn btn-danger" href="/personagens/excluir/<%=personagem.id%>" 
+                            onclick="return confirm('Deseja mesmo excluir o personagem <%= personagem.nome %>')">Excluir</a>
+                        </td>
+                    </tr>
+                    <%}) %>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="personagens"> 
+        
+                    <h5>Esses são alguns dos personagens que fazem parte do anime Diários de uma Apotecária:</h5>
+                    <img src="/images/personagens.jpeg" alt="Personagens da tabela">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+<%- include('partials/footer.ejs')%>    

@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs')%>
+<%- include('partials/navbar.ejs')%>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Melhores Episódios</h1>
+            <br>
+        </div>
+        <div class="card-body">
+            <form action="/mlrsEpisodios/alterar" method="POST">
+            <label for="episodio">Nome do Cliente</label>
+            <input type="text" name="episodio" id="episodio" class="form-control" required value="<%=mlrsEpisodios.episodio %>">
+            <label for="resumo">Resumo do Episodio</label>
+            <input type="text" name="resumo" id="resumo" class="form-control" required value="<%=mlrsEpisodios.resumo %>">
+            <!-- Campo invisível com a ID do cliente -->
+             <input type="hidden" name="id" id="id" value="<%=mlrsEpisodios.id %>">
+            <br>
+            <button type="submit" class="btn btn-warning" onclick="return confirm('Deseja mesmo alterar o episódio <%=mlrsEpisodios.episodio %>')">Alterar</button>
+            <a href="/mlrsEpisodios">
+            <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs')%>

@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs')%>
+<%- include('partials/navbar.ejs')%>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Personagens</h1>
+            <br>
+        </div>
+        <div class="card-body">
+            <form action="/personagens/alterar" method="POST">
+            <label for="nome">Nome do Personagem</label>
+            <input type="text" name="nome" id="nome" class="form-control" required value="<%=personagens.nome %>">
+            <label for="idade">Idade do Personagem</label>
+            <input type="text" name="idade" id="idade" class="form-control" required value="<%=personagens.idade %>">
+            <label for="descricao">Descrição Sobre o Personagem</label>
+            <input type="text" name="desccricao" id="descricao" class="form-control" required value="<%= perspnagens.descricao %>">
+            <!-- Campo invisível com a ID do cliente -->
+             <input type="hidden" name="id" id="id" value="<%=personagens.id %>">
+            <br>
+            <button type="submit" class="btn btn-warning" onclick="return confirm('Deseja mesmo alterar o personagem <%=personagens.nome %>')">Alterar</button>
+            <a href="/personagens">
+            <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs')%>
